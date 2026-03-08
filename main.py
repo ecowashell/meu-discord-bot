@@ -1,3 +1,4 @@
+import os
 import discord
 from discord.ext import commands
 import asyncio
@@ -5,11 +6,9 @@ import difflib
 from collections import defaultdict
 from datetime import datetime, timedelta
 
-# ================= CONFIG ================= #
+TOKEN = os.getenv("TOKEN")
 
-TOKEN = os.getenv("MTQ3OTkyNjcyMTc1ODIzNjc2Mw.GBaIk1.air4owVjPCM93LUDbs5LE3Ivwb3rYA4nUulD4U")
-
-GIF_BANNER = "https://media.discordapp.net/attachments/1479926552773918792/1480054974514724945/standard_1.gif?ex=69ae481c&is=69acf69c&hm=0b071d68e07044dc85a1a1464c1c711968e50d9ec20f80d833535d3cad4f717f&="
+GIF_BANNER = "https://media.discordapp.net/attachments/1479926552773918792/1480054974514724945/standard_1.gif"
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -316,5 +315,6 @@ async def on_command_error(ctx, error):
 # ================= START ================= #
 
 bot.run(TOKEN)
+
 
 
