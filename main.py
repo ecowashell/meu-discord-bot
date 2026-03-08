@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 
 # ================= CONFIG ================= #
 
-TOKEN = "MTQ3OTkyNjcyMTc1ODIzNjc2Mw.GtzUh5.tebczY4mXjeBWzBJfHbVevXK3TaCerynCxDXiw"
+TOKEN = "MTQ3OTkyNjcyMTc1ODIzNjc2Mw.GBaIk1.air4owVjPCM93LUDbs5LE3Ivwb3rYA4nUulD4U"
 
 GIF_BANNER = "https://media.discordapp.net/attachments/1479926552773918792/1480054974514724945/standard_1.gif?ex=69ae481c&is=69acf69c&hm=0b071d68e07044dc85a1a1464c1c711968e50d9ec20f80d833535d3cad4f717f&="
 
@@ -316,3 +316,4 @@ async def on_command_error(ctx, error):
 # ================= START ================= #
 
 bot.run(TOKEN)
+
