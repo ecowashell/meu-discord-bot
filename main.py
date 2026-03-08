@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 
 TOKEN = os.getenv("TOKEN")
 
-GIF_BANNER = "https://media.discordapp.net/attachments/1479926552773918792/1480054974514724945/standard_1.gif"
+GIF_BANNER = "https://media.discordapp.net/attachments/1479835854435520607/1480074101304463473/standard_7.gif?ex=69ae59ec&is=69ad086c&hm=f83037286c5f5a6d84d989a0bbd98e7189f1412c7e208988b319a67f94fab11a&=&width=928&height=522"
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -315,6 +315,7 @@ async def on_command_error(ctx, error):
 # ================= START ================= #
 
 bot.run(TOKEN)
+
 
 
 
