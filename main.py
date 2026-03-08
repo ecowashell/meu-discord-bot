@@ -13,6 +13,7 @@ GIF_BANNER = "https://media.discordapp.net/attachments/1479835854435520607/14800
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
+intents.voice_states = True
 
 bot = commands.Bot(
     command_prefix=",",
@@ -286,6 +287,64 @@ async def setupembed(ctx):
 
     await ctx.send(embed=embed, view=SetupView())
 
+
+# ================= CALL 24/7 ================= #
+
+voice_channel_247 = None
+
+
+@bot.command()
+@is_moderator()
+async def call(ctx, canal_id: int = None):
+
+    global voice_channel_247
+
+    try:
+
+        if canal_id:
+
+            canal = bot.get_channel(canal_id)
+
+        else:
+
+            if ctx.author.voice:
+                canal = ctx.author.voice.channel
+            else:
+                return await ctx.send("❌ Você precisa estar em um canal de voz.")
+
+        if not isinstance(canal, discord.VoiceChannel):
+            return await ctx.send("❌ Canal inválido.")
+
+        voice_channel_247 = canal
+
+        if ctx.voice_client:
+            await ctx.voice_client.move_to(canal)
+        else:
+            await canal.connect()
+
+        await ctx.send(f"🎧 Conectado no canal **{canal.name}** (modo 24/7 ativado)")
+
+    except Exception as e:
+        await ctx.send("❌ Erro ao conectar.")
+
+
+# ================= DESCONECT ================= #
+
+@bot.command()
+@is_moderator()
+async def desconect(ctx):
+
+    global voice_channel_247
+
+    voice_channel_247 = None
+
+    if ctx.voice_client:
+        await ctx.voice_client.disconnect()
+        await ctx.send("👋 Saí do canal de voz.")
+    else:
+        await ctx.send("❌ Não estou em nenhum canal.")
+
+
 # ================= ERROS ================= #
 
 @bot.event
@@ -315,6 +374,7 @@ async def on_command_error(ctx, error):
 # ================= START ================= #
 
 bot.run(TOKEN)
+
 
 
 
